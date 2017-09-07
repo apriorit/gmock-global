@@ -11,6 +11,8 @@
 #define MOCK_GLOBAL_FUNC0_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method () constness {  \
     GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
@@ -42,6 +44,8 @@ public:\
 #define MOCK_GLOBAL_FUNC1_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness {  \
     GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
@@ -75,6 +79,8 @@ public:\
 #define MOCK_GLOBAL_FUNC2_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
@@ -111,6 +117,8 @@ public:\
 #define MOCK_GLOBAL_FUNC3_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -150,6 +158,8 @@ public:\
 #define MOCK_GLOBAL_FUNC4_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -192,6 +202,8 @@ public:\
 #define MOCK_GLOBAL_FUNC5_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -237,6 +249,8 @@ public:\
 #define MOCK_GLOBAL_FUNC6_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -285,6 +299,8 @@ public:\
 #define MOCK_GLOBAL_FUNC7_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -336,6 +352,8 @@ public:\
 #define MOCK_GLOBAL_FUNC8_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -390,6 +408,8 @@ public:\
 #define MOCK_GLOBAL_FUNC9_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -447,6 +467,8 @@ public:\
 #define MOCK_GLOBAL_FUNC10_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -507,6 +529,8 @@ public:\
 #define MOCK_GLOBAL_FUNC11_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -570,6 +594,8 @@ public:\
 #define MOCK_GLOBAL_FUNC12_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -636,6 +662,8 @@ public:\
 #define MOCK_GLOBAL_FUNC13_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -705,6 +733,8 @@ public:\
 #define MOCK_GLOBAL_FUNC14_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -777,6 +807,8 @@ public:\
 #define MOCK_GLOBAL_FUNC15_(tn, constness, ct, Method, ...) \
 class gmock_globalmock_##Method { \
 public:\
+  gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
+  const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -854,26 +886,25 @@ template <typename T>
 class GlobalMockDeleter
 {
 public:
-    GlobalMockDeleter(std::unique_ptr<T>& ref) : mockReference(ref)
-    {}
+    GlobalMockDeleter(std::unique_ptr<T>& ref) : m_mockReference(ref) {}
 
     ~GlobalMockDeleter()
     {
-        mockReference.reset();
+        m_mockReference.reset();
     }
 
 private:
-    std::unique_ptr<T>& mockReference;
+    std::unique_ptr<T>& m_mockReference;
 };
 
-#define GLOBAL_MOCK_DELETER_NAME3(x, y) x##y
-#define GLOBAL_MOCK_DELETER_NAME2(x, y) GLOBAL_MOCK_DELETER_NAME3(x, y)
-#define GLOBAL_MOCK_DELETER_NAME(x) GLOBAL_MOCK_DELETER_NAME2(x, __COUNTER__)
+#define GLOBAL_MOCK_DELETER_NAME3(x, y)     x##y
+#define GLOBAL_MOCK_DELETER_NAME2(x, y)     GLOBAL_MOCK_DELETER_NAME3(x, y)
+#define GLOBAL_MOCK_DELETER_NAME(x)         GLOBAL_MOCK_DELETER_NAME2(x, __COUNTER__)
 
-#define GLOBAL_MOCK_TYPE(name) gmock_globalmock_##name
-#define GLOBAL_MOCK_INSTANCE(name) gmock_globalmock_##name##_instance
+#define GLOBAL_MOCK_TYPE(name)              gmock_globalmock_##name
+#define GLOBAL_MOCK_INSTANCE(name)          gmock_globalmock_##name##_instance
 
 #define EXPECT_GLOBAL_CALL(name, method) \
 GlobalMockDeleter<GLOBAL_MOCK_TYPE(name)> GLOBAL_MOCK_DELETER_NAME(mock_deleter)(GLOBAL_MOCK_INSTANCE(name));\
-GLOBAL_MOCK_INSTANCE(name).reset(new GLOBAL_MOCK_TYPE(name));\
+if (!GLOBAL_MOCK_INSTANCE(name) || 0 != strcmp(GLOBAL_MOCK_INSTANCE(name)->m_tag, __FUNCTION__)) GLOBAL_MOCK_INSTANCE(name).reset(new GLOBAL_MOCK_TYPE(name)(__FUNCTION__));\
 EXPECT_CALL(*GLOBAL_MOCK_INSTANCE(name), method)
