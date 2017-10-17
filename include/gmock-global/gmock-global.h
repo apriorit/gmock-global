@@ -32,7 +32,7 @@ public:\
    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method() constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method();\
+       return gmock_globalmock_##Method##_instance->Method();\
       }\
 
 #define MOCK_GLOBAL_FUNC0(m, ...) MOCK_GLOBAL_FUNC0_(, , , m, __VA_ARGS__)
@@ -67,7 +67,7 @@ public:\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1);\
       }\
 
 #define MOCK_GLOBAL_FUNC1(m, ...) MOCK_GLOBAL_FUNC1_(, , , m, __VA_ARGS__)
@@ -105,7 +105,7 @@ public:\
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2);\
       }\
 
 #define MOCK_GLOBAL_FUNC2(m, ...) MOCK_GLOBAL_FUNC2_(, , , m, __VA_ARGS__)
@@ -146,7 +146,7 @@ public:\
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3);\
       }\
 
 #define MOCK_GLOBAL_FUNC3(m, ...) MOCK_GLOBAL_FUNC3_(, , , m, __VA_ARGS__)
@@ -190,7 +190,7 @@ public:\
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4 ) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4);\
       }\
 
 #define MOCK_GLOBAL_FUNC4(m, ...) MOCK_GLOBAL_FUNC4_(, , , m, __VA_ARGS__)
@@ -237,7 +237,7 @@ public:\
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5);\
       }\
 
 #define MOCK_GLOBAL_FUNC5(m, ...) MOCK_GLOBAL_FUNC5_(, , , m, __VA_ARGS__)
@@ -287,7 +287,7 @@ public:\
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6);\
       }\
 
 #define MOCK_GLOBAL_FUNC6(m, ...) MOCK_GLOBAL_FUNC6_(, , , m, __VA_ARGS__)
@@ -340,7 +340,7 @@ public:\
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7);\
       }\
 
 #define MOCK_GLOBAL_FUNC7(m, ...) MOCK_GLOBAL_FUNC7_(, , , m, __VA_ARGS__)
@@ -396,7 +396,7 @@ public:\
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8);\
       }\
 
 #define MOCK_GLOBAL_FUNC8(m, ...) MOCK_GLOBAL_FUNC8_(, , , m, __VA_ARGS__)
@@ -455,7 +455,7 @@ public:\
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9);\
       }\
 
 #define MOCK_GLOBAL_FUNC9(m, ...) MOCK_GLOBAL_FUNC9_(, , , m, __VA_ARGS__)
@@ -517,7 +517,7 @@ public:\
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10);\
       }\
 
 #define MOCK_GLOBAL_FUNC10(m, ...) MOCK_GLOBAL_FUNC10_(, , , m, __VA_ARGS__)
@@ -582,7 +582,7 @@ public:\
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11);\
       }\
 
 #define MOCK_GLOBAL_FUNC11(m, ...) MOCK_GLOBAL_FUNC11_(, , , m, __VA_ARGS__)
@@ -650,7 +650,7 @@ public:\
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12);\
       }\
 
 #define MOCK_GLOBAL_FUNC12(m, ...) MOCK_GLOBAL_FUNC12_(, , , m, __VA_ARGS__)
@@ -721,7 +721,7 @@ public:\
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13);\
       }\
 
 #define MOCK_GLOBAL_FUNC13(m, ...) MOCK_GLOBAL_FUNC13_(, , , m, __VA_ARGS__)
@@ -795,7 +795,7 @@ public:\
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14);\
       }\
 
 #define MOCK_GLOBAL_FUNC14(m, ...) MOCK_GLOBAL_FUNC14_(, , , m, __VA_ARGS__)
@@ -872,7 +872,7 @@ public:\
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14, \
       GMOCK_ARG_(tn, 15, __VA_ARGS__) gmock_a15) constness { \
          \
-       return gmock_globalmock_##Method##_instance->##Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14, gmock_a15);\
+       return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14, gmock_a15);\
       }\
 
 #define MOCK_GLOBAL_FUNC15(m, ...) MOCK_GLOBAL_FUNC15_(, , , m, __VA_ARGS__)
