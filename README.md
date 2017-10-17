@@ -1,4 +1,4 @@
-# gmockglobal
+# gmock-global
 This header-only library implements [gmock](https://github.com/google/googletest/blob/master/googlemock) functionality for global functions. 
 
 # Introduction
@@ -8,9 +8,9 @@ Like for the class methods in original gmock you wrote `MOCK_METHOD#N` for mocki
 # Usage
 
 ## Step 1: Adding includes
-At first your project needs to know about [gmockglobal](https://github.com/apriorit/gmockglobal).
-1. Add `gmockglobal/include` to the project include paths.
-2. Add `#include <gmockglobal/gmockglobal.h>` after [gmock](https://github.com/google/googletest/blob/master/googlemock) include.
+At first your project needs to know about [gmock-global](https://github.com/apriorit/gmock-global).
+1. Add `gmock-global/include` to the project include paths.
+2. Add `#include <gmock-global/gmock-global.h>` after [gmock](https://github.com/google/googletest/blob/master/googlemock) include.
 
 ## Step 2: Declare mock global
 Syntax is most similar to gmock. For example, to mock function ```multiply``` with two ```double``` arguments and ```double``` result you have to write declaration: 
@@ -26,10 +26,10 @@ EXPECT_GLOBAL_CALL(multiply, multiply(1, 2));
 The ```.Times(...)``` and other methods will be work too. 
 
 # Samples
-For the samples see [repo](https://github.com/apriorit/gmockglobal_sample)
+For the samples see [repo](https://github.com/apriorit/gmock-global_sample)
 
 # License
-[gmockglobal](https://github.com/apriorit/gmockglobal) is licensed under the MIT License. You can freely use it in your commercial or opensource software.
+[gmock-global](https://github.com/apriorit/gmock-global) is licensed under the MIT License. You can freely use it in your commercial or opensource software.
 
 # Version history
 
