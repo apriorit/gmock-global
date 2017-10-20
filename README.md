@@ -1,6 +1,16 @@
 # gmock-global
 This header-only library implements [gmock](https://github.com/google/googletest/blob/master/googlemock) functionality for global functions. 
 
+- [Introduction](#introduction)
+- [Usage](#usage)
+  - [Step 1: Adding includes](#step-1-adding-includes)
+  - [Step 2: Declare mock global](#step-2-declare-mock-global)
+- [Known issues](#known-issues)
+- [Samples](#samples)
+- [License](#license)
+- [Version history](#version-history)
+  - [Version 1.0.0 (17 Oct 2017)](#version-100-17-oct-2017)
+  
 # Introduction
 [Gmock](https://github.com/google/googletest/blob/master/googlemock) is a C++ framework for writing [mock classes](https://en.wikipedia.org/wiki/Mock_object). It is very convenient to create mock objects for mocking of methods. But [gmock](https://github.com/google/googletest/blob/master/googlemock) can not mock global functions. This problem is quite common but has no trivial solution. [Gmock FAQ](https://github.com/google/googlemock/blob/master/googlemock/docs/FrequentlyAskedQuestions.md#my-code-calls-a-staticglobal-function--can-i-mock-it) says you are doing something wrong if you need to mock static or global functions. However it is required in some cases and [gmock-global](https://github.com/apriorit/gmock-global) provides such functionality.
 
