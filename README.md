@@ -1,4 +1,4 @@
-# gmock-global
+# gmock-global [![Build Status](https://travis-ci.org/apriorit/gmock-global-sample.svg?branch=master)](https://travis-ci.org/apriorit/gmock-global-sample)
 This header-only library implements [gmock](https://github.com/google/googletest/blob/master/googlemock) functionality for global functions. 
 
 - [Introduction](#introduction)
