@@ -9,6 +9,7 @@ This header-only library implements [gmock](https://github.com/google/googletest
 - [Samples](#samples)
 - [License](#license)
 - [Version history](#version-history)
+  - [Version 1.0.1 (19 Apr 2019)](#version-101-19-apr-2019)
   - [Version 1.0.0 (17 Oct 2017)](#version-100-17-oct-2017)
   
 # Introduction
@@ -46,7 +47,7 @@ TEST(TestGlobal, CanMultiplyGlobal)
 }
 ```
 
-[gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments. It requires [gmock-more-args](https://github.com/apriorit/gmock-more-args) in such case. 
+[gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments with  [gtest version 1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1). But it requires [gmock-more-args version 1.0.1](https://github.com/apriorit/gmock-more-args/releases/tag/1.0.1) in case you use [gtest version 1.8.0](https://github.com/google/googletest/releases/tag/release-1.8.0)
 
 
 # Known issues
@@ -59,6 +60,10 @@ Samples live in the separate [repository](https://github.com/apriorit/gmock-glob
 [gmock-global](https://github.com/apriorit/gmock-global) is licensed under the MIT License. You can freely use it in your commercial or opensource software.
 
 # Version history
+
+## Version 1.0.1 (19 Apr 2019)
+- Specified compatibility with gtest 1.8.1
+- Fixed warnings
 
 ## Version 1.0.0 (17 Oct 2017)
 - Initial public release

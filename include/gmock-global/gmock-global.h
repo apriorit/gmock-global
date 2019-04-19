@@ -21,7 +21,7 @@ public:\
     GMOCK_MOCKER_(0, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(0, constness, Method).Invoke(); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method() constness { \
     GMOCK_MOCKER_(0, constness, Method).RegisterOwner(this); \
     return GMOCK_MOCKER_(0, constness, Method).With(); \
@@ -55,7 +55,7 @@ public:\
     GMOCK_MOCKER_(1, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(1, constness, Method).Invoke(gmock_a1); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1) constness { \
     GMOCK_MOCKER_(1, constness, Method).RegisterOwner(this); \
     return GMOCK_MOCKER_(1, constness, Method).With(gmock_a1); \
@@ -91,7 +91,7 @@ public:\
     GMOCK_MOCKER_(2, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(2, constness, Method).Invoke(gmock_a1, gmock_a2); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
     GMOCK_MOCKER_(2, constness, Method).RegisterOwner(this); \
@@ -130,7 +130,7 @@ public:\
     GMOCK_MOCKER_(3, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(3, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
@@ -172,7 +172,7 @@ public:\
     GMOCK_MOCKER_(4, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(4, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -217,7 +217,7 @@ public:\
     GMOCK_MOCKER_(5, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(5, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -265,7 +265,7 @@ public:\
     GMOCK_MOCKER_(6, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(6, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -316,7 +316,7 @@ public:\
     GMOCK_MOCKER_(7, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(7, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -370,7 +370,7 @@ public:\
     GMOCK_MOCKER_(8, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(8, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -427,7 +427,7 @@ public:\
     GMOCK_MOCKER_(9, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(9, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -487,7 +487,7 @@ public:\
     GMOCK_MOCKER_(10, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(10, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -550,7 +550,7 @@ public:\
     GMOCK_MOCKER_(11, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(11, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -616,7 +616,7 @@ public:\
     GMOCK_MOCKER_(12, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(12, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -685,7 +685,7 @@ public:\
     GMOCK_MOCKER_(13, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(13, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -757,7 +757,7 @@ public:\
     GMOCK_MOCKER_(14, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(14, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
@@ -832,7 +832,7 @@ public:\
     GMOCK_MOCKER_(15, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(15, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14, gmock_a15); \
   } \
-  ::testing::MockSpec<__VA_ARGS__>& \
+  ::testing::MockSpec<__VA_ARGS__> \
       gmock_##Method(GMOCK_MATCHER_(tn, 1, __VA_ARGS__) gmock_a1, \
                      GMOCK_MATCHER_(tn, 2, __VA_ARGS__) gmock_a2, \
                      GMOCK_MATCHER_(tn, 3, __VA_ARGS__) gmock_a3, \
