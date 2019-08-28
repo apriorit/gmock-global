@@ -5,6 +5,12 @@
 // Mock classes for different argument count definitions
 //
 
+#define MOCK_GLOBAL_CHECK_INIT(Method)                                                \
+    if (!gmock_globalmock_##Method##_instance)                                        \
+    {                                                                                 \
+        throw std::logic_error("You forgot to call EXPECT_GLOBAL_CALL for " #Method); \
+    }
+
 //
 // Mock class and macroses for 0 arguments global function
 //
@@ -14,7 +20,7 @@ public:\
   gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
   const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method () constness {  \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 0), \
         this_method_does_not_take_0_arguments); \
@@ -31,7 +37,7 @@ public:\
    }; \
    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method() constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method();\
       }\
 
@@ -48,7 +54,7 @@ public:\
   const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness {  \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 1), \
         this_method_does_not_take_1_arguments); \
@@ -66,7 +72,7 @@ public:\
    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1);\
       }\
 
@@ -84,7 +90,7 @@ public:\
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 2), \
         this_method_does_not_take_2_arguments); \
@@ -104,7 +110,7 @@ public:\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2);\
       }\
 
@@ -123,7 +129,7 @@ public:\
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 3), \
         this_method_does_not_take_3_arguments); \
@@ -145,7 +151,7 @@ public:\
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3);\
       }\
 
@@ -165,7 +171,7 @@ public:\
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 4), \
         this_method_does_not_take_4_arguments); \
@@ -189,7 +195,7 @@ public:\
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4 ) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4);\
       }\
 
@@ -210,7 +216,7 @@ public:\
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 5), \
         this_method_does_not_take_5_arguments); \
@@ -236,7 +242,7 @@ public:\
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5);\
       }\
 
@@ -258,7 +264,7 @@ public:\
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 6), \
         this_method_does_not_take_6_arguments); \
@@ -286,7 +292,7 @@ public:\
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6);\
       }\
 
@@ -309,7 +315,7 @@ public:\
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 7), \
         this_method_does_not_take_7_arguments); \
@@ -339,7 +345,7 @@ public:\
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7);\
       }\
 
@@ -363,7 +369,7 @@ public:\
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 8), \
         this_method_does_not_take_8_arguments); \
@@ -395,7 +401,7 @@ public:\
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8);\
       }\
 
@@ -420,7 +426,7 @@ public:\
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 9), \
         this_method_does_not_take_9_arguments); \
@@ -454,7 +460,7 @@ public:\
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9);\
       }\
 
@@ -480,7 +486,7 @@ public:\
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 10), \
         this_method_does_not_take_10_arguments); \
@@ -516,7 +522,7 @@ public:\
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10);\
       }\
 
@@ -543,7 +549,7 @@ public:\
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 11), \
         this_method_does_not_take_11_arguments); \
@@ -581,7 +587,7 @@ public:\
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11);\
       }\
 
@@ -609,7 +615,7 @@ public:\
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 12), \
         this_method_does_not_take_12_arguments); \
@@ -649,7 +655,7 @@ public:\
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12);\
       }\
 
@@ -678,7 +684,7 @@ public:\
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 13), \
         this_method_does_not_take_13_arguments); \
@@ -720,7 +726,7 @@ public:\
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13);\
       }\
 
@@ -750,7 +756,7 @@ public:\
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 14), \
         this_method_does_not_take_14_arguments); \
@@ -794,7 +800,7 @@ public:\
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14);\
       }\
 
@@ -825,7 +831,7 @@ public:\
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14, \
       GMOCK_ARG_(tn, 15, __VA_ARGS__) gmock_a15) constness { \
-    GTEST_COMPILE_ASSERT_((::testing::tuple_size<                          \
+    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 15), \
         this_method_does_not_take_15_arguments); \
@@ -871,7 +877,7 @@ public:\
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14, \
       GMOCK_ARG_(tn, 15, __VA_ARGS__) gmock_a15) constness { \
-         \
+       MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14, gmock_a15);\
       }\
 
