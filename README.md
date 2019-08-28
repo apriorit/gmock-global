@@ -33,7 +33,7 @@ You can check call count of such function using `EXPECT_GLOBAL_CALL` macro, same
 EXPECT_GLOBAL_CALL(multiply, multiply(1, 2));
 ```
 
-The `.Times(...)` and other methods will be work too. 
+The `.Times(...)` and other methods will be work too.
 
 In result mocking of global `double multiply(double, double)` looks like:
 ```cpp
@@ -47,6 +47,8 @@ TEST(TestGlobal, CanMultiplyGlobal)
     multiply(1, 2);
 }
 ```
+
+Also you can use `ON_GLOBAL_CALL` to specify default behavior. 
 
 [gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments with [gtest version 1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1). But it requires [gmock-more-args version 1.0.1](https://github.com/apriorit/gmock-more-args/releases/tag/1.0.1) in case you use [gtest version 1.8.0](https://github.com/google/googletest/releases/tag/release-1.8.0)
 
@@ -62,7 +64,7 @@ Samples live in the separate [repository](https://github.com/apriorit/gmock-glob
 # Version history
 
 ## Version 1.0.2 (28 Aug 2019)
-- Add ON_GLOBAL_CALL (fix #4)
+- Added ON_GLOBAL_CALL (fix #4)
 
 ## Version 1.0.1 (19 Apr 2019)
 - Specified compatibility with gtest 1.8.1
