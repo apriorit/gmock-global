@@ -904,7 +904,10 @@ private:
 #define GLOBAL_MOCK_TYPE(name)              gmock_globalmock_##name
 #define GLOBAL_MOCK_INSTANCE(name)          gmock_globalmock_##name##_instance
 
-#define EXPECT_GLOBAL_CALL(name, method) \
+#define GLOBAL_MOCK_CALL(name, method, callType) \
 GlobalMockDeleter<GLOBAL_MOCK_TYPE(name)> GLOBAL_MOCK_DELETER_NAME(mock_deleter)(GLOBAL_MOCK_INSTANCE(name));\
 if (!GLOBAL_MOCK_INSTANCE(name) || 0 != strcmp(GLOBAL_MOCK_INSTANCE(name)->m_tag, __FUNCTION__)) GLOBAL_MOCK_INSTANCE(name).reset(new GLOBAL_MOCK_TYPE(name)(__FUNCTION__));\
-EXPECT_CALL(*GLOBAL_MOCK_INSTANCE(name), method)
+callType(*GLOBAL_MOCK_INSTANCE(name), method)
+
+#define EXPECT_GLOBAL_CALL(name, method)    GLOBAL_MOCK_CALL(name, method, EXPECT_CALL)
+#define ON_GLOBAL_CALL(name, method)        GLOBAL_MOCK_CALL(name, method, ON_CALL)
