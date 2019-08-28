@@ -64,7 +64,8 @@ Samples live in the separate [repository](https://github.com/apriorit/gmock-glob
 # Version history
 
 ## Version 1.0.2 (28 Aug 2019)
-- Added ON_GLOBAL_CALL (fix #4)
+- Added ON_GLOBAL_CALL (#4)
+- Segmentation fault when executing tests on a function that has been mocked in another test (#2)
 
 ## Version 1.0.1 (19 Apr 2019)
 - Specified compatibility with gtest 1.8.1
