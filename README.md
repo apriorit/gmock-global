@@ -9,6 +9,7 @@ This header-only library implements [gmock](https://github.com/google/googletest
 - [Samples](#samples)
 - [License](#license)
 - [Version history](#version-history)
+  - [Version 1.0.2 (28 Aug 2019)](#version-102-28-aug-2019)
   - [Version 1.0.1 (19 Apr 2019)](#version-101-19-apr-2019)
   - [Version 1.0.0 (17 Oct 2017)](#version-100-17-oct-2017)
   
@@ -47,8 +48,7 @@ TEST(TestGlobal, CanMultiplyGlobal)
 }
 ```
 
-[gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments with  [gtest version 1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1). But it requires [gmock-more-args version 1.0.1](https://github.com/apriorit/gmock-more-args/releases/tag/1.0.1) in case you use [gtest version 1.8.0](https://github.com/google/googletest/releases/tag/release-1.8.0)
-
+[gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments with [gtest version 1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1). But it requires [gmock-more-args version 1.0.1](https://github.com/apriorit/gmock-more-args/releases/tag/1.0.1) in case you use [gtest version 1.8.0](https://github.com/google/googletest/releases/tag/release-1.8.0)
 
 # Known issues
 The [after clause](https://github.com/google/googletest/blob/master/googlemock/docs/CheatSheet.md#the-after-clause) can't be using with [gmock-global](https://github.com/apriorit/gmock-global), use `Sequences` instead.
@@ -60,6 +60,9 @@ Samples live in the separate [repository](https://github.com/apriorit/gmock-glob
 [gmock-global](https://github.com/apriorit/gmock-global) is licensed under the MIT License. You can freely use it in your commercial or opensource software.
 
 # Version history
+
+## Version 1.0.2 (28 Aug 2019)
+- Add ON_GLOBAL_CALL (fix #4)
 
 ## Version 1.0.1 (19 Apr 2019)
 - Specified compatibility with gtest 1.8.1
