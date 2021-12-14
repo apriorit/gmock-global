@@ -2,6 +2,26 @@
 #include <memory>
 
 //
+// Some internal macros were deleted in gtest-1.11.0 return them back
+//
+
+#ifndef GMOCK_RESULT_
+#define GMOCK_RESULT_(tn, ...) \
+    tn ::testing::internal::Function<__VA_ARGS__>::Result
+#endif
+
+#ifndef GMOCK_ARG_
+#define GMOCK_ARG_(tn, N, ...) \
+    tn ::testing::internal::Function<__VA_ARGS__>::template Arg<N-1>::type
+#endif
+
+#ifndef GMOCK_MATCHER_
+#define GMOCK_MATCHER_(tn, N, ...) \
+    const ::testing::Matcher<GMOCK_ARG_(tn, N, __VA_ARGS__)>&
+#endif
+
+
+//
 // Mock classes for different argument count definitions
 //
 
