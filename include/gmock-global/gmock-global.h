@@ -40,10 +40,10 @@ public:\
   gmock_globalmock_##Method(const char* tag) : m_tag(tag) {}  \
   const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method () constness {  \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 0), \
-        this_method_does_not_take_0_arguments); \
+        "this method does not take 0 arguments");  \
     GMOCK_MOCKER_(0, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(0, constness, Method).Invoke(); \
   } \
@@ -74,10 +74,10 @@ public:\
   const char* const m_tag; \
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness {  \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 1), \
-        this_method_does_not_take_1_arguments); \
+        "this method does not take 1 arguments");  \
     GMOCK_MOCKER_(1, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(1, constness, Method).Invoke(gmock_a1); \
   } \
@@ -110,10 +110,10 @@ public:\
   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 2), \
-        this_method_does_not_take_2_arguments); \
+        "this method does not take 2 arguments"); \
     GMOCK_MOCKER_(2, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(2, constness, Method).Invoke(gmock_a1, gmock_a2); \
   } \
@@ -149,10 +149,10 @@ public:\
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 3), \
-        this_method_does_not_take_3_arguments); \
+        "this method does not take 3 arguments");  \
     GMOCK_MOCKER_(3, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(3, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3); \
   } \
@@ -191,10 +191,10 @@ public:\
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 4), \
-        this_method_does_not_take_4_arguments); \
+        "this method does not take 4 arguments");  \
     GMOCK_MOCKER_(4, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(4, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4); \
   } \
@@ -236,10 +236,10 @@ public:\
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 5), \
-        this_method_does_not_take_5_arguments); \
+        "this method does not take 5 arguments");  \
     GMOCK_MOCKER_(5, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(5, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5); \
   } \
@@ -284,10 +284,10 @@ public:\
       GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4, \
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 6), \
-        this_method_does_not_take_6_arguments); \
+        "this method does not take 6 arguments");  \
     GMOCK_MOCKER_(6, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(6, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6); \
   } \
@@ -335,10 +335,10 @@ public:\
       GMOCK_ARG_(tn, 5, __VA_ARGS__) gmock_a5, \
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 7), \
-        this_method_does_not_take_7_arguments); \
+        "this method does not take 7 arguments");  \
     GMOCK_MOCKER_(7, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(7, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7); \
   } \
@@ -389,10 +389,10 @@ public:\
       GMOCK_ARG_(tn, 6, __VA_ARGS__) gmock_a6, \
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 8), \
-        this_method_does_not_take_8_arguments); \
+        "this method does not take 8 arguments");  \
     GMOCK_MOCKER_(8, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(8, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8); \
   } \
@@ -446,10 +446,10 @@ public:\
       GMOCK_ARG_(tn, 7, __VA_ARGS__) gmock_a7, \
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 9), \
-        this_method_does_not_take_9_arguments); \
+        "this method does not take 9 arguments");  \
     GMOCK_MOCKER_(9, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(9, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9); \
   } \
@@ -506,10 +506,10 @@ public:\
       GMOCK_ARG_(tn, 8, __VA_ARGS__) gmock_a8, \
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 10), \
-        this_method_does_not_take_10_arguments); \
+        "this method does not take 10 arguments");  \
     GMOCK_MOCKER_(10, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(10, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10); \
   } \
@@ -569,10 +569,10 @@ public:\
       GMOCK_ARG_(tn, 9, __VA_ARGS__) gmock_a9, \
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 11), \
-        this_method_does_not_take_11_arguments); \
+        "this method does not take 11 arguments");  \
     GMOCK_MOCKER_(11, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(11, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11); \
   } \
@@ -635,10 +635,10 @@ public:\
       GMOCK_ARG_(tn, 10, __VA_ARGS__) gmock_a10, \
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 12), \
-        this_method_does_not_take_12_arguments); \
+        "this method does not take 12 arguments");  \
     GMOCK_MOCKER_(12, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(12, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12); \
   } \
@@ -704,10 +704,10 @@ public:\
       GMOCK_ARG_(tn, 11, __VA_ARGS__) gmock_a11, \
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 13), \
-        this_method_does_not_take_13_arguments); \
+        "this method does not take 13 arguments");  \
     GMOCK_MOCKER_(13, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(13, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13); \
   } \
@@ -776,10 +776,10 @@ public:\
       GMOCK_ARG_(tn, 12, __VA_ARGS__) gmock_a12, \
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 14), \
-        this_method_does_not_take_14_arguments); \
+        "this method does not take 14 arguments");  \
     GMOCK_MOCKER_(14, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(14, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14); \
   } \
@@ -851,10 +851,10 @@ public:\
       GMOCK_ARG_(tn, 13, __VA_ARGS__) gmock_a13, \
       GMOCK_ARG_(tn, 14, __VA_ARGS__) gmock_a14, \
       GMOCK_ARG_(tn, 15, __VA_ARGS__) gmock_a15) constness { \
-    GTEST_COMPILE_ASSERT_((std::tuple_size<                          \
+    static_assert((std::tuple_size<                          \
         tn ::testing::internal::Function<__VA_ARGS__>::ArgumentTuple>::value \
             == 15), \
-        this_method_does_not_take_15_arguments); \
+        "this method does not take 15 arguments");  \
     GMOCK_MOCKER_(15, constness, Method).SetOwnerAndName(this, #Method); \
     return GMOCK_MOCKER_(15, constness, Method).Invoke(gmock_a1, gmock_a2, gmock_a3, gmock_a4, gmock_a5, gmock_a6, gmock_a7, gmock_a8, gmock_a9, gmock_a10, gmock_a11, gmock_a12, gmock_a13, gmock_a14, gmock_a15); \
   } \
