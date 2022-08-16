@@ -55,13 +55,22 @@ public:\
   mutable ::testing::FunctionMocker<__VA_ARGS__> GMOCK_MOCKER_(0, constness, \
       Method); \
    }; \
-   std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+  extern std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern "C" GMOCK_RESULT_(tn, __VA_ARGS__) ct Method() constness;
+   // { \
+   //    MOCK_GLOBAL_CHECK_INIT(Method); \
+   //    return gmock_globalmock_##Method##_instance->Method();\
+   //   }\
+
+#define MOCK_GLOBAL_FUNC0_IMPL_(tn, constness, ct, Method, ...) \
+  std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method() constness { \
        MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method();\
-      }\
+      }
 
 #define MOCK_GLOBAL_FUNC0(m, ...) MOCK_GLOBAL_FUNC0_(, , , m, __VA_ARGS__)
+#define MOCK_GLOBAL_FUNC0_IMPL(m, ...) MOCK_GLOBAL_FUNC0_IMPL_(, , , m, __VA_ARGS__)
 #define MOCK_GLOBAL_FUNC0_WITH_CALLTYPE(ct, m, ...) MOCK_GLOBAL_FUNC0_(, , ct, m, __VA_ARGS__)
 
 //
@@ -89,14 +98,24 @@ public:\
   mutable ::testing::FunctionMocker<__VA_ARGS__> GMOCK_MOCKER_(1, constness, \
       Method); \
    }; \
+   extern std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern "C"  GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+      GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness; \
+      // { \
+      // MOCK_GLOBAL_CHECK_INIT(Method); \
+      // return gmock_globalmock_##Method##_instance->Method(gmock_a1);\
+      //}\
+
+#define MOCK_GLOBAL_FUNC1_IMPL_(tn, constness, ct, Method, ...) \
    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
-   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+     GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1) constness { \
        MOCK_GLOBAL_CHECK_INIT(Method); \
        return gmock_globalmock_##Method##_instance->Method(gmock_a1);\
       }\
 
 #define MOCK_GLOBAL_FUNC1(m, ...) MOCK_GLOBAL_FUNC1_(, , , m, __VA_ARGS__)
+#define MOCK_GLOBAL_FUNC1_IMPL(m, ...) MOCK_GLOBAL_FUNC1_IMPL_(, , , m, __VA_ARGS__)
 #define MOCK_GLOBAL_FUNC1_WITH_CALLTYPE(ct, m, ...) MOCK_GLOBAL_FUNC1_(, , ct, m, __VA_ARGS__)
 
 //
@@ -126,6 +145,16 @@ public:\
   mutable ::testing::FunctionMocker<__VA_ARGS__> GMOCK_MOCKER_(2, constness, \
       Method); \
    }; \
+   extern std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern "C"  GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+      GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
+      GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2) constness ; \
+      //{ \
+      // MOCK_GLOBAL_CHECK_INIT(Method); \
+      // return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2);\
+      //}\
+
+#define MOCK_GLOBAL_FUNC2_IMPL_(tn, constness, ct, Method, ...) \
    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
@@ -136,7 +165,7 @@ public:\
 
 #define MOCK_GLOBAL_FUNC2(m, ...) MOCK_GLOBAL_FUNC2_(, , , m, __VA_ARGS__)
 #define MOCK_GLOBAL_FUNC2_WITH_CALLTYPE(ct, m, ...) MOCK_GLOBAL_FUNC2_(, , ct, m, __VA_ARGS__)
-
+#define MOCK_GLOBAL_FUNC2_IMPL(m, ...) MOCK_GLOBAL_FUNC2_IMPL_(, , , m, __VA_ARGS__)
 //
 // Mock class and macroses for 3 arguments global function
 //
@@ -166,8 +195,19 @@ public:\
   mutable ::testing::FunctionMocker<__VA_ARGS__> GMOCK_MOCKER_(3, constness, \
       Method); \
    }; \
-   std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
-   GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+   extern std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern "C"  GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+      GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
+      GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
+      GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness;\
+      //{ \
+      // MOCK_GLOBAL_CHECK_INIT(Method); \
+      // return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3);\
+      //}\
+
+#define MOCK_GLOBAL_FUNC3_IMPL_(tn, constness, ct, Method, ...) \
+    std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
       GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3) constness { \
@@ -176,6 +216,7 @@ public:\
       }\
 
 #define MOCK_GLOBAL_FUNC3(m, ...) MOCK_GLOBAL_FUNC3_(, , , m, __VA_ARGS__)
+#define MOCK_GLOBAL_FUNC3_IMPL(m, ...) MOCK_GLOBAL_FUNC3_IMPL_(, , , m, __VA_ARGS__)
 #define MOCK_GLOBAL_FUNC3_WITH_CALLTYPE(ct, m, ...) MOCK_GLOBAL_FUNC3_(, , ct, m, __VA_ARGS__)
 
 //
@@ -209,7 +250,19 @@ public:\
   mutable ::testing::FunctionMocker<__VA_ARGS__> GMOCK_MOCKER_(4, constness, \
       Method); \
    }; \
-   std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
+   extern "C" GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
+      GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
+      GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
+      GMOCK_ARG_(tn, 3, __VA_ARGS__) gmock_a3, \
+      GMOCK_ARG_(tn, 4, __VA_ARGS__) gmock_a4 ) constness ;
+      //{ \
+      // MOCK_GLOBAL_CHECK_INIT(Method); \
+      // return gmock_globalmock_##Method##_instance->Method(gmock_a1, gmock_a2, gmock_a3, gmock_a4);\
+      //}\
+
+#define MOCK_GLOBAL_FUNC4_IMPL_(tn, constness, ct, Method, ...) \
+  std::unique_ptr< gmock_globalmock_##Method > gmock_globalmock_##Method##_instance;\
    GMOCK_RESULT_(tn, __VA_ARGS__) ct Method( \
       GMOCK_ARG_(tn, 1, __VA_ARGS__) gmock_a1, \
       GMOCK_ARG_(tn, 2, __VA_ARGS__) gmock_a2, \
@@ -220,6 +273,7 @@ public:\
       }\
 
 #define MOCK_GLOBAL_FUNC4(m, ...) MOCK_GLOBAL_FUNC4_(, , , m, __VA_ARGS__)
+#define MOCK_GLOBAL_FUNC4_IMPL(m, ...) MOCK_GLOBAL_FUNC4_IMPL_(, , , m, __VA_ARGS__)
 #define MOCK_GLOBAL_FUNC4_WITH_CALLTYPE(ct, m, ...) MOCK_GLOBAL_FUNC4_(, , ct, m, __VA_ARGS__)
 
 //
@@ -937,3 +991,4 @@ callType(*GLOBAL_MOCK_INSTANCE(name), method)
 
 #define EXPECT_GLOBAL_CALL(name, method)    GLOBAL_MOCK_CALL(name, method, EXPECT_CALL)
 #define ON_GLOBAL_CALL(name, method)        GLOBAL_MOCK_CALL(name, method, ON_CALL)
+
