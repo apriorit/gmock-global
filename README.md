@@ -48,7 +48,7 @@ TEST(TestGlobal, CanMultiplyGlobal)
 }
 ```
 
-Also you can use `ON_GLOBAL_CALL` to specify default behavior. 
+Also you can use `ON_GLOBAL_CALL` to specify default behavior. `ON_GLOBAL_NICE_CALL` can be used to set default behavior with suppressed warning when this mock was actually called.
 
 [gmock-global](https://github.com/apriorit/gmock-global) supports more than 10 arguments with [gtest version 1.8.1](https://github.com/google/googletest/releases/tag/release-1.8.1). But it requires [gmock-more-args version 1.0.1](https://github.com/apriorit/gmock-more-args/releases/tag/1.0.1) in case you use [gtest version 1.8.0](https://github.com/google/googletest/releases/tag/release-1.8.0)
 

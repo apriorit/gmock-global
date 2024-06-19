@@ -930,10 +930,14 @@ private:
 #define GLOBAL_MOCK_TYPE(name)              gmock_globalmock_##name
 #define GLOBAL_MOCK_INSTANCE(name)          gmock_globalmock_##name##_instance
 
-#define GLOBAL_MOCK_CALL(name, method, callType) \
+#define GLOBAL_MOCK_INTERNAL_CALL(name, method, callType, mockType) \
 GlobalMockDeleter<GLOBAL_MOCK_TYPE(name)> GLOBAL_MOCK_DELETER_NAME(mock_deleter)(GLOBAL_MOCK_INSTANCE(name));\
-if (!GLOBAL_MOCK_INSTANCE(name) || 0 != strcmp(GLOBAL_MOCK_INSTANCE(name)->m_tag, __FUNCTION__)) GLOBAL_MOCK_INSTANCE(name).reset(new GLOBAL_MOCK_TYPE(name)(__FUNCTION__));\
+if (!GLOBAL_MOCK_INSTANCE(name) || 0 != strcmp(GLOBAL_MOCK_INSTANCE(name)->m_tag, __FUNCTION__)) GLOBAL_MOCK_INSTANCE(name).reset(new mockType(__FUNCTION__));\
 callType(*GLOBAL_MOCK_INSTANCE(name), method)
+
+#define GLOBAL_MOCK_CALL(name, method, callType)      GLOBAL_MOCK_INTERNAL_CALL(name, method, callType, GLOBAL_MOCK_TYPE(name))
+#define GLOBAL_NICE_MOCK_CALL(name, method, callType) GLOBAL_MOCK_INTERNAL_CALL(name, method, callType, ::testing::NiceMock<GLOBAL_MOCK_TYPE(name)>)
 
 #define EXPECT_GLOBAL_CALL(name, method)    GLOBAL_MOCK_CALL(name, method, EXPECT_CALL)
 #define ON_GLOBAL_CALL(name, method)        GLOBAL_MOCK_CALL(name, method, ON_CALL)
+#define ON_GLOBAL_NICE_CALL(name, method)   GLOBAL_NICE_MOCK_CALL(name, method, ON_CALL)
