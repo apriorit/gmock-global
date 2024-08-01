@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    paths-ignore:
+      - LICENSE
+      - README.md
+  pull_request:
+    paths-ignore:
+      - LICENSE
+      - README.md
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: ${{ matrix.cxx }}, ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+      matrix:
+        include: [
+          # You can access the following values via ${{ matrix.??? }}
+          #
+          #   cxx          : C++ compiler executable
+          #   os           : GitHub Actions YAML workflow label.  See https://github.com/actions/virtual-environments#available-environments
+
+          # linux: gcc
+          { os: ubuntu-22.04,   cxx: g++-11, }, # (default on Jammy 22.04)
+          # linux: clang
+          { os: ubuntu-22.04,   cxx: clang++-14 },
+          # windows: msvc
+          { os: windows-2022,   cxx: 'vs2022' },
+        ]
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      CXX: ${{ matrix.cxx }}
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: build with gtest:release-1.8.1
+      run: |
+        cmake -Bbuild-dir -DCMAKE_BUILD_TYPE=Release -DGMOCK_GLOBAL_GTEST_GIT_TAG="release-1.8.1" .
+        cmake --build build-dir --parallel
+
+    - name: build with gtest:release-1.11.0
+      run: |
+        cmake -Bbuild-dir -DCMAKE_BUILD_TYPE=Release -DGMOCK_GLOBAL_GTEST_GIT_TAG="release-1.11.0" .
+        cmake --build build-dir --parallel
+
+    - name: build with gtest:v1.15.2
+      run: |
+        cmake -Bbuild-dir -DCMAKE_BUILD_TYPE=Release -DGMOCK_GLOBAL_GTEST_GIT_TAG="v1.15.2" .
+        cmake --build build-dir --parallel
