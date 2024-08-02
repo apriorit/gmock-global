@@ -1,4 +1,5 @@
-# gmock-global [![Build Status](https://travis-ci.org/apriorit/gmock-global-sample.svg?branch=master)](https://travis-ci.org/apriorit/gmock-global-sample)
+# gmock-global [![Build Status](https://github.com/apriorit/gmock-global/actions/workflows/ci.yml/badge.svg)](https://github.com/apriorit/gmock-global/actions/workflows/ci.yml)
+
 This header-only library implements [gmock](https://github.com/google/googletest/blob/master/googlemock) functionality for global functions. 
 
 - [Introduction](#introduction)
@@ -15,6 +16,10 @@ This header-only library implements [gmock](https://github.com/google/googletest
   
 # Introduction
 [Gmock](https://github.com/google/googletest/blob/master/googlemock) is a C++ framework for writing [mock classes](https://en.wikipedia.org/wiki/Mock_object). It is very convenient to create mock objects for mocking of methods. But [gmock](https://github.com/google/googletest/blob/master/googlemock) can not mock global functions. This problem is quite common but has no trivial solution. [Gmock FAQ](https://github.com/google/googlemock/blob/master/googlemock/docs/FrequentlyAskedQuestions.md#my-code-calls-a-staticglobal-function--can-i-mock-it) says you are doing something wrong if you need to mock static or global functions. However it is required in some cases and [gmock-global](https://github.com/apriorit/gmock-global) provides such functionality.
+
+## Supported environment
+- gmock version 1.8.1-1.15.2 (older versions may work too but they are not covered by CI)
+- gcc/clang/msvc
 
 # Usage
 
@@ -56,7 +61,7 @@ Also you can use `ON_GLOBAL_CALL` to specify default behavior. `ON_GLOBAL_NICE_C
 The [after clause](https://github.com/google/googletest/blob/master/googlemock/docs/CheatSheet.md#the-after-clause) can't be using with [gmock-global](https://github.com/apriorit/gmock-global), use `Sequences` instead.
 
 # Samples
-Samples live in the separate [repository](https://github.com/apriorit/gmock-global-sample)
+Take a look at the test [sample](https://github.com/apriorit/gmock-global/tree/master/sample).
 
 # License
 [gmock-global](https://github.com/apriorit/gmock-global) is licensed under the MIT License. You can freely use it in your commercial or opensource software.
